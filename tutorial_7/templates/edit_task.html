@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Edit Task{% endblock %}
+
+{% block content %}
+    <h1>Edit Task</h1>
+    <div class="form-container">
+        <form method="post">
+            Title: <input type="text" name="title" value="{{ task['title'] }}" required><br>
+            Description: <textarea name="description">{{ task['description'] }}</textarea><br>
+            Due Date: <input type="date" name="due_date" value="{{ task['due_date'] }}"><br>
+            Priority: 
+            <select name="priority">
+                <option {% if task['priority'] == 'Low' %}selected{% endif %}>Low</option>
+                <option {% if task['priority'] == 'Medium' %}selected{% endif %}>Medium</option>
+                <option {% if task['priority'] == 'High' %}selected{% endif %}>High</option>
+            </select><br>
+            Completed: <input type="checkbox" name="completed" {% if task['completed'] %}checked{% endif %}><br>
+            <input type="submit" value="Update Task">
+        </form>
+    </div>
+{% endblock %}
